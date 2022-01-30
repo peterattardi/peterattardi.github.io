@@ -18,9 +18,12 @@
       referrerpolicy="no-referrer"
     ></script>
     <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"
+      integrity="sha512-5efjkDjhldlK+BrHauVYJpbjKrtNemLZksZWxd6Wdxvm06dceqWGLLNjZywOkvW7BF032ktHRMUOarbK9d60bg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
 
     <title>Pietro Attardi</title>
   </head>
@@ -34,7 +37,7 @@
         <nav>
           <ul class="nav-links">
             <li><a href="#projects">Projects</a></li>
-            <li><a href="">Résumé</a></li>
+            <li><a href="#details">Résumé</a></li>
           </ul>
         </nav>
       </section>
@@ -52,44 +55,163 @@
 
     <!-- Main ---------------------------------------------------------->
     <main>
+      <!-- Detail ---------------------------------------------------------->
+      <section class="details" id="details">
+        <h1 class="projects__title">My <span>Details</span></h1>
+        <div class="details__grid">
+          <div class="details__column">
+            <article>
+              <h2 class="detail__title">My <span>Info</span></h2>
+              <div class="detail__item">
+                <p><strong>Name: </strong> Pietro Attardi</p>
+                <p><strong>Age: </strong> 22</p>
+                <p><strong>Place of Birth: </strong> Palermo, Italy</p>
+                <p><strong>Degree: </strong>Computer Science</p>
+                <p><strong>Graduation Date: </strong>2021-07-28</p>
+                <p>
+                  <strong>Institutions: </strong><br />
+                  Università degli Studi di Palermo, Palermo IT <br />
+                  Eötvös Loránd University, Budapest HU
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="details__column">
+            <article>
+              <h2 class="detail__title">My <span>Skills</span></h2>
+              <div class="detail__item">
+                <p><strong>Backend: </strong>Spring Boot • Django RF</p>
+                <p><strong>Frontend: </strong>HTML • CSS • React</p>
+                <p><strong>Query Languages: </strong> SQL • GraphQL • SparQL</p>
+                <p>
+                  <strong>Programming Languages: </strong>C • Java • Python •
+                  Javascript
+                </p>
+              </div>
+              <a href="./assets/resume.pdf" target="_blank" class="btn--outline"
+                >Download My Résumé</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects ---------------------------------------------------------->
       <section class="projects" id="projects">
         <h1 class="projects__title">My <span>Projects</span></h1>
 
         <div class="projects__grid">
-          <article class="projects__item">
+          <!-- Desktop Version------->
+          <article class="projects__item desktop">
             <div class="project__card">
               <div class="card__content">
                 <div class="card__front">
                   <div class="card__title"><h2>Familudget</h2></div>
                 </div>
                 <div class="card__back">
-                  <p>An app to track your income and expenses</p>
+                  <p>
+                    Familudget <br />
+                    An app to track your income and expenses
+                  </p>
                   <div class="card__links">
-                    <a href="" class="card__link">View Demo</a>
+                    <a
+                      href="https://familudget.herokuapp.com/"
+                      target="_blank"
+                      class="btn--outline"
+                      >View Demo</a
+                    >
                   </div>
                 </div>
               </div>
             </div>
           </article>
-
-          <article class="projects__item">
+          <article class="projects__item desktop">
             <div class="project__card">
               <div class="card__content">
                 <div class="card__front">
                   <div class="card__title"><h2>Supermarket Webapp</h2></div>
                 </div>
                 <div class="card__back">
-                  <p>An app to do grocery online</p>
+                  <p>
+                    Supermarket Webapp <br />
+                    app to do grocery online
+                  </p>
                   <div class="card__links">
-                    <a href="" class="card__link">View Demo</a>
+                    <a
+                      target="_blank"
+                      href="https://github.com/peterattardi/SupermarketWebApp"
+                      class="btn--outline"
+                      >View Demo</a
+                    >
                   </div>
                 </div>
               </div>
             </div>
           </article>
+          <!-- Mobile version --------->
+          <article class="projects__item mobile">
+            <div class="project__card-mobile">
+              <h2>Familudget</h2>
+              <div class="card__links">
+                <a
+                  href="https://familudget.herokuapp.com/"
+                  target="_blank"
+                  class="btn--outline"
+                  >View Demo</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="projects__item mobile">
+            <div class="project__card-mobile">
+              <h2>Supermarket WebApp</h2>
+              <div class="card__links">
+                <a
+                  href="https://github.com/peterattardi/SupermarketWebApp"
+                  target="_blank"
+                  class="btn--outline"
+                  >View Demo</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="contacts" id="contacts">
+        <h1>Contact <span>me</span></h1>
+        <div class="email">
+          <input
+            type="text"
+            value="pietro.attardi.pa@gmail.com"
+            id="myInput"
+            disabled
+          />
+          <div class="tooltip btn--primary">
+            Copy
+            <span class="tooltiptext">Copy To Clipboard</span>
+          </div>
         </div>
       </section>
     </main>
+
+    <footer>
+      <p>Pietro Attardi © All right reserved</p>
+      <div class="icons">
+        <a
+          href="https://www.linkedin.com/in/pietro-attardi-b27814223/"
+          target="_blank"
+        >
+          <img src="https://img.icons8.com/ios-glyphs/30/ffffff/linkedin.png" />
+        </a>
+
+        <a href="https://github.com/peterattardi" target="_blank"
+          ><img src="https://img.icons8.com/windows/30/ffffff/github.png"
+        /></a>
+      </div>
+    </footer>
 
     <div class="loading-animations">
       <section class="loading-text">

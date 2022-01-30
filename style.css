@@ -123,15 +123,90 @@ header a:hover {
   color: var(--accent-color);
 }
 
-.card__link {
-  outline: 1px solid var(--accent-color);
+.btn--primary {
+  background: var(--accent-color);
+  color: var(--background);
   padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  max-width: 200px;
 }
 
-.card__link:hover {
-  background-color: var(--accent-color);
+.btn--outline {
+  background: transparent;
+  outline: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  max-width: 200px;
+}
+
+.btn--primary:hover {
+  background: transparent;
+  outline: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  max-width: 200px;
+}
+
+.btn--outline:hover {
+  background: var(--accent-color);
   color: var(--background);
-  outline: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  max-width: 200px;
+}
+
+h1 span,
+h2 > span {
+  color: var(--accent-color);
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
@@ -206,8 +281,8 @@ header {
 .arrow > div {
   width: 50px;
   height: 50px;
-  border-bottom: 10px solid var(--header-text-color);
-  border-right: 10px solid var(--header-text-color);
+  border-bottom: 3px solid var(--header-text-color);
+  border-right: 3px solid var(--header-text-color);
   transform: rotate(45deg);
   animation: blink2 infinite 2000ms ease-in-out;
 }
@@ -249,17 +324,26 @@ header {
 /*--------------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------*/
 
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 7rem;
+}
+.projects__item.mobile {
+  display: none;
+}
+
 .projects {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 5em;
-}
-.projects__title span {
-  color: var(--accent-color);
+  width: 100%;
 }
 
 .projects__grid {
+  opacity: 0;
+  width: 100%;
   display: flex;
   gap: 5rem;
 }
@@ -274,10 +358,10 @@ header {
   color: var(--background);
   box-shadow: var(--box-shadow);
   border-radius: 0.75rem;
-  padding: 5rem 10rem;
   position: relative;
   transition: all 500ms ease-in-out;
   text-align: center;
+  padding: 5rem 8rem;
 }
 
 .card__content {
@@ -286,8 +370,9 @@ header {
   height: 100%;
   inset: 0;
   border-radius: inherit;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: border, transform 500ms ease-in-out;
+  transform-style: preserve-3d;
 }
 
 .card__front,
@@ -297,10 +382,14 @@ header {
   height: 100%;
   inset: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0;
 }
 
 .card__front {
@@ -320,10 +409,12 @@ header {
   gap: 2rem;
   align-items: center;
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
-.card__content:hover {
+.project__card:hover .card__content {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
 .project__card:hover {
@@ -332,6 +423,101 @@ header {
   border-bottom-left-radius: 10px;
   border-top-left-radius: 50px;
   border-bottom-right-radius: 50px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.details__grid {
+  opacity: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: start;
+  align-items: flex-start;
+  width: 100%;
+  gap: 20rem;
+}
+
+.details__column > article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.detail__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5rem;
+  width: 100%;
+}
+
+.email {
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+}
+
+.email > input {
+  padding: 0.45rem 2rem;
+  min-width: 320px;
+  font-family: inherit;
+  font-size: clamp(0.5rem, -0.875rem + 8.333vw, 1rem);
+  outline: 1px solid var(--accent-color);
+  border: none;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.email > div {
+  cursor: pointer;
+  max-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email > div:hover {
+  max-width: 100px;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+/*------------------Footer--------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+
+footer {
+  padding: var(--padding);
+  display: flex;
+  background: black;
+  color: var(--background);
+  flex-direction: column;
+  align-items: center;
+  align-items: center;
+  font-size: 1.3rem;
+  letter-spacing: 0.7px;
+  gap: 1.5rem;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
@@ -390,8 +576,80 @@ header {
     flex-direction: column;
     gap: 1rem;
   }
-  .nav-links {
+}
+
+@media screen and (max-width: 700px) {
+  .logo {
+    font-weight: bold;
+  }
+  .projects__item.desktop {
+    display: none;
+  }
+
+  .projects__item.mobile {
+    display: flex;
+  }
+
+  .projects__grid {
     flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
+
+  article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .project__card-mobile {
+    position: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
     gap: 2rem;
+    color: var(--background);
+    padding: 2rem 4rem;
+    transition: none;
+    background: var(--accent-color);
+    width: 80%;
+  }
+
+  .project__card:hover {
+    all: unset;
+    transform: none;
+    transition: none;
+  }
+
+  .card__links .btn--outline {
+    outline: 1px solid var(--background);
+    color: var(--background);
+  }
+
+  .card__links .btn--outline:hover {
+    outline: none;
+    background: var(--background);
+    color: var(--accent-color);
+  }
+
+  .project__card:hover {
+    transition: unset;
+  }
+
+  .details__grid {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+  }
+
+  .detail__item {
+    text-align: center;
+  }
+
+  .email {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 }
