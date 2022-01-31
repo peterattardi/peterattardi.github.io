@@ -13,6 +13,8 @@ let resolution = 13;
 function setup() {
   let header = document.querySelector("header");
   canvas = createCanvas(header.clientWidth, header.clientHeight);
+  resolution = 0.009 * header.clientWidth;
+  console.log(header.clientWidth, header.clientHeight);
   canvas.position(0, 0);
   canvas.style("z-index", "-99");
   canvas.style("webkitFilter", "blur(1px)");
@@ -99,6 +101,7 @@ function make2DArray(cols, rows) {
 
 function windowResized() {
   let header = document.querySelector("header");
+  resolution = 0.009 * header.clientWidth;
   resizeCanvas(header.clientWidth, header.clientHeight);
   configureGrid();
 }
